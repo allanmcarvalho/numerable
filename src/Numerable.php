@@ -7,7 +7,16 @@ class Numerable
     public function __construct(
         protected readonly float|int $number
     ) {
+        //
+    }
 
+    /**
+     * Add the given values to the number.
+     */
+    public function add(Numerable|int|float|string ...$values): static
+    {
+        $numbers = array_map(fn ($value) => Number::from($value)->raw(), $values);
+        return new static(Number::add($this->number, ...$numbers));
     }
 
     public function raw(): float|int
@@ -16,11 +25,11 @@ class Numerable
     }
 
     /**
-     * Add the given values to the number.
+     * Subtract the given values to the number.
      */
-    public function add(Numerable|int|float|string ...$values): static
+    public function sub(Numerable|int|float|string ...$values): static
     {
-        $numbers = array_map(fn ($value) => (new static($value))->raw(), $values);
-        return new static(Number::sum($this->number, ...$numbers));
+        $numbers = array_map(fn ($value) => Number::from($value)->raw(), $values);
+        return new static(Number::sub($this->number, ...$numbers));
     }
 }

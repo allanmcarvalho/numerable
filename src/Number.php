@@ -6,6 +6,19 @@ use NumberFormatter;
 
 class Number
 {
+
+    /**
+     * Sum the given values.
+     */
+    public static function add(int|float ...$values): float|int
+    {
+        $result = 0;
+        foreach ($values as $value) {
+            $result += $value;
+        }
+        return $result;
+    }
+
     /**
      * Get a new numerable object from the given number.
      */
@@ -32,10 +45,28 @@ class Number
     }
 
     /**
-     * Sum the given values.
+     * Subtract the given values.
      */
-    public static function sum(int|float ...$values): float|int
+    public static function sub(int|float $startValue = 0, int|float ...$values): float|int
     {
-        return array_sum($values);
+        $result = $startValue;
+        foreach ($values as $value) {
+            $result -= $value;
+        }
+        return $result;
+    }
+
+    public static function toFloat(int|float $value): float
+    {
+        return is_float($value) ? $value : floatval($value);
+    }
+
+    public static function toInteger(int|float $value, int $mode = null): int
+    {
+        if (is_int($value)) {
+            return $value;
+        }
+
+        return intval($mode === null ? $value : round($value, mode: $mode));
     }
 }
