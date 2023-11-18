@@ -45,6 +45,7 @@ class Number
         if (is_numeric($number)) {
             return new Numerable($number);
         }
+
         return null;
     }
 
@@ -68,6 +69,7 @@ class Number
         $formatter = new NumberFormatter($locale ?? config('app.locale', 'en'), NumberFormatter::DECIMAL);
         $newNumber = preg_replace('/[^0-9,.]+/', '', $number);
         $multiplier = in_array(ord(mb_substr($number, 0, 1)), [226, 45]) ? -1 : 1;
+
         return $newNumber === '' ? null : new Numerable($formatter->parse($newNumber) * $multiplier);
     }
 
