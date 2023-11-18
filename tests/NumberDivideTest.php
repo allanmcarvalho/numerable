@@ -12,7 +12,7 @@ it('can do a simple division', function () {
         ->toEqual(1.5)
         ->and(Number::divide(4, 0))
         ->toThrow(InvalidArgumentException::class)
-        ->and(Number::divide(4, 0, fn() => 5))
+        ->and(Number::divide(4, 0, fn () => 5))
         ->toEqual(5);
 })->throws(InvalidArgumentException::class);
 
@@ -25,7 +25,7 @@ it('can do a simple division using helper', function () {
         ->toEqual(1.5)
         ->and(num()->divide(4, 0))
         ->toThrow(InvalidArgumentException::class)
-        ->and(num()->divide(4, 0, fn() => 5))
+        ->and(num()->divide(4, 0, fn () => 5))
         ->toEqual(5);
 })->throws(InvalidArgumentException::class);
 
@@ -47,7 +47,7 @@ it('can be divided by int values', function () {
 
 it('can be divided by float values even if zero', function () {
     $number = num(new Numerable(10));
-    $number2 = $number->dividedBy(0, fn() => 300);
+    $number2 = $number->dividedBy(0, fn () => 300);
 
     expect($number)
         ->toEqual(new Numerable(10))
@@ -111,7 +111,7 @@ it('can divide float values', function () {
 
 it('can divide float values even divisor is 0', function () {
     $number = num(new Numerable(0));
-    $number2 = $number->divide(10, fn() => 432.2);
+    $number2 = $number->divide(10, fn () => 432.2);
 
     expect($number)
         ->toEqual(new Numerable(0))

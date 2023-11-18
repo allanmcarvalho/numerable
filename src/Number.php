@@ -7,7 +7,6 @@ use NumberFormatter;
 
 class Number
 {
-
     /**
      * Sum the given values.
      */
@@ -17,13 +16,14 @@ class Number
         foreach ($values as $value) {
             $result += $value;
         }
+
         return $result;
     }
 
     /**
      * Divide the given values.
      */
-    public static function divide(int|float $dividend, int|float $divisor, ?callable $zeroSafeCallback = null): float|int
+    public static function divide(int|float $dividend, int|float $divisor, callable $zeroSafeCallback = null): float|int
     {
         if (floatval($divisor) === 0.0) {
             if ($zeroSafeCallback !== null) {
@@ -31,6 +31,7 @@ class Number
             }
             throw new InvalidArgumentException('The divisor cannot be zero.');
         }
+
         return $dividend / $divisor;
     }
 
@@ -58,6 +59,7 @@ class Number
         foreach ($values as $value) {
             $result *= $value;
         }
+
         return $result;
     }
 
@@ -82,6 +84,7 @@ class Number
         foreach ($values as $value) {
             $result -= $value;
         }
+
         return $result;
     }
 

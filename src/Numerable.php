@@ -16,13 +16,14 @@ class Numerable
     public function add(Numerable|int|float|string ...$values): static
     {
         $numbers = array_map(fn ($value) => Number::from($value)->raw(), $values);
+
         return new static(Number::add($this->number, ...$numbers));
     }
 
     /**
      * Divide a given dividend by the number.
      */
-    public function divide(Numerable|int|float|string $dividend, ?callable $zeroSafeCallback = null): static
+    public function divide(Numerable|int|float|string $dividend, callable $zeroSafeCallback = null): static
     {
         return new static(Number::divide(Number::from($dividend)->raw(), $this->number, $zeroSafeCallback));
     }
@@ -30,7 +31,7 @@ class Numerable
     /**
      * Divide the number by the given divisor.
      */
-    public function dividedBy(Numerable|int|float|string $divisor, ?callable $zeroSafeCallback = null): static
+    public function dividedBy(Numerable|int|float|string $divisor, callable $zeroSafeCallback = null): static
     {
         return new static(Number::divide($this->number, Number::from($divisor)->raw(), $zeroSafeCallback));
     }
@@ -41,6 +42,7 @@ class Numerable
     public function multiply(Numerable|int|float|string ...$values): static
     {
         $numbers = array_map(fn ($value) => Number::from($value)->raw(), $values);
+
         return new static(Number::multiply($this->number, ...$numbers));
     }
 
@@ -55,6 +57,7 @@ class Numerable
     public function sub(Numerable|int|float|string ...$values): static
     {
         $numbers = array_map(fn ($value) => Number::from($value)->raw(), $values);
+
         return new static(Number::sub($this->number, ...$numbers));
     }
 

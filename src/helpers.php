@@ -6,10 +6,10 @@ use Numerable\Numerable;
 if (! function_exists('num')) {
     /**
      * Get a new numerable object from the given number.
-     * @param  \Numerable\Numerable|int|float|string|null  $number
+     *
      * @return \Numerable\Numerable|mixed
      */
-    function num(Numerable|int|float|string|null $number = null)
+    function num(Numerable|int|float|string $number = null)
     {
         if (func_num_args() === 0) {
             return new class
@@ -25,6 +25,7 @@ if (! function_exists('num')) {
                 }
             };
         }
+
         return Number::from($number);
     }
 }

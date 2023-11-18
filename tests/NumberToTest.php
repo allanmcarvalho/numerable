@@ -1,7 +1,6 @@
 <?php
 
 use Numerable\Number;
-use Numerable\Numerable;
 
 it('can do a simple cast', function () {
     expect(Number::toInteger(2.5))
