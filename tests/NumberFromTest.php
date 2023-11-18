@@ -18,7 +18,7 @@ it('return numerable from numerable instance', function () {
         ->toBeInt()
         ->toEqual(10)
         ->and($numerable === $numerable2)
-        ->toBeFalse();
+        ->toBeTrue();
 });
 
 it('return numerable from int numeric string', function () {
