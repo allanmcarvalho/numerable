@@ -4,7 +4,7 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/allanmcarvalho/numerable/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/allanmcarvalho/numerable/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/allanmcarvalho/numerable/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/allanmcarvalho/numerable/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/allanmcarvalho/numerable.svg?style=flat-square)](https://packagist.org/packages/allanmcarvalho/numerable)
-[![Total Downloads](https://codecov.io/gh/WSS-Group/AllgaTrap/graph/badge.svg?token=IPbCkwoGFB)](https://codecov.io/gh/allanmcarvalho/numerable)
+[![codecov](https://codecov.io/gh/allanmcarvalho/numerable/graph/badge.svg?token=Jz0e5EbT1d)](https://codecov.io/gh/allanmcarvalho/numerable)
 
 This package provide a solution like Laravel strings utils classes. With it, you can do some cool stuffs in your numbers
 like assert, modify, math operations, format and other things.
