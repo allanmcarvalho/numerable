@@ -2,6 +2,7 @@
 
 namespace Numerable;
 
+use InvalidArgumentException;
 use NumberFormatter;
 
 class Number
@@ -20,6 +21,20 @@ class Number
     }
 
     /**
+     * Divide the given values.
+     */
+    public static function divide(int|float $dividend, int|float $divisor, ?callable $zeroSafeCallback = null): float|int
+    {
+        if (floatval($divisor) === 0.0) {
+            if ($zeroSafeCallback !== null) {
+                return $zeroSafeCallback($dividend, $divisor);
+            }
+            throw new InvalidArgumentException('The divisor cannot be zero.');
+        }
+        return $dividend / $divisor;
+    }
+
+    /**
      * Get a new numerable object from the given number.
      */
     public static function from(Numerable|int|float|string|null $number): ?Numerable
@@ -31,6 +46,18 @@ class Number
             return new Numerable($number);
         }
         return null;
+    }
+
+    /**
+     * Multiply the given values.
+     */
+    public static function multiply(int|float ...$values): float|int
+    {
+        $result = 1;
+        foreach ($values as $value) {
+            $result *= $value;
+        }
+        return $result;
     }
 
     /**
@@ -56,11 +83,18 @@ class Number
         return $result;
     }
 
+    /**
+     * Parse the given number to a float type.
+     */
     public static function toFloat(int|float $value): float
     {
         return is_float($value) ? $value : floatval($value);
     }
 
+    /**
+     * Parse the given number to an integer type.
+     * You can provide as argument the round type (e.g.: PHP_ROUND_HALF_UP).
+     */
     public static function toInteger(int|float $value, int $mode = null): int
     {
         if (is_int($value)) {
