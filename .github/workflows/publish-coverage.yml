@@ -1,0 +1,21 @@
+name: run-tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  coverage:
+    name: Run and publish coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute coverage
+        run: php -dxdebug.mode=coverage ./vendor/bin/pest --coverage-clove ./.build/cache/coverage.xml
+      - name: "Publish coverage report to Codecov"
+        uses: "codecov/codecov-action@v3.1.4"
+        with:
+          files: ./.build/cache/coverage.xml
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
