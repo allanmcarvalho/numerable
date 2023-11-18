@@ -7,7 +7,7 @@ if (! function_exists('num')) {
     /**
      * Get a new numerable object from the given number.
      */
-    function num(Numerable|int|float|string|null $number = null): Numerable|null
+    function num(Numerable|int|float|string $number = null): ?Numerable
     {
         return Number::from($number);
     }
