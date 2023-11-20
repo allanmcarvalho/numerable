@@ -17,7 +17,7 @@ You can install the package via composer:
 composer require allanmcarvalho/numerable
 ```
 
-## Usage
+## Basic usage
 Numerable is like Laravel string utils classes. You can use Helper class or an instance from numerable.
 
 ```php
@@ -47,6 +47,19 @@ $number->toInteger(); // 15
     
 
 ```
+
+## Available methods
+
+- **add** - Add numbers. Available as static method and instance method.
+- **divide** - Divide numbers. Available as static method and instance method.
+- **multiply** - Multiply numbers. Available as static method and instance method.
+- **parse** - Parse string to number. Available as static method.
+- **sub** - Subtract numbers. Available as static method and instance method.
+- **toCurrency** - Format number to currency. Available as static method and instance method.
+- **toFloat** - Format number to float. Available as static method and instance method.
+- **toInteger** - Format number to integer. Available as static method and instance method.
+
+
 
 ```php
 $numerable = new Numerable\Numerable();
