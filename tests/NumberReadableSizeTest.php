@@ -1,7 +1,6 @@
 <?php
 
 use Numerable\Number;
-use Numerable\Numerable;
 
 it('can do a simple format', function () {
     expect(Number::toReadableSize(1024))

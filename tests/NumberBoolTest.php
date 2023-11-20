@@ -1,7 +1,6 @@
 <?php
 
 use Numerable\Number;
-use Numerable\Numerable;
 
 it('can do a equal check', function () {
     expect(Number::equal(1, 1))
@@ -17,34 +16,34 @@ it('can do a equal check with instance', function () {
     expect(num(1.0)->equal(1))
         ->toBeTrue()
         ->and(num(1.0)->equal(1, strict: true))
-            ->toBeFalse();
+        ->toBeFalse();
 });
 
 it('can do a lt check with instance', function () {
     expect(num(10)->lt(9.0))
         ->toBeFalse()
         ->and(num(10)->lt(10))
-            ->toBeFalse()
+        ->toBeFalse()
         ->and(num(10)->lt(11))
-            ->toBeTrue();
+        ->toBeTrue();
 });
 
 it('can do a lte check with instance', function () {
     expect(num(10)->lte(9))
         ->toBeFalse()
         ->and(num(10)->lte(10.0))
-            ->toBeTrue()
+        ->toBeTrue()
         ->and(num(10)->lte(11))
-            ->toBeTrue();
+        ->toBeTrue();
 });
 
 it('can do a gt check with instance', function () {
     expect(num(9)->gt(10))
         ->toBeFalse()
         ->and(num(10)->gt(10.0))
-            ->toBeFalse()
+        ->toBeFalse()
         ->and(num(10)->gt(9))
-            ->toBeTrue();
+        ->toBeTrue();
 });
 
 it('can do a gte check with instance', function () {
