@@ -15,21 +15,12 @@ it('do a simple abs using helper', function () {
         ->toEqual(2);
 });
 
-it('calculate a variation to', function () {
-    expect(num(100)->variationTo(80)->raw())
+it('abs a number', function () {
+    expect(num(-100)->abs()->raw())
+        ->toBeInt()
+        ->toEqual(100)
+    ->and(num(-85.32)->abs()->raw())
         ->toBeFloat()
-        ->toEqual(0.2)
-    ->and(num(80)->variationTo(100)->raw())
-        ->toBeFloat()
-        ->toEqual(-0.25);
+        ->toEqual(85.32);
 });
 
-
-//it('calculate a variation from', function () {
-//    expect(num(110)->variationFrom(100)->raw())
-//        ->toBeFloat()
-//        ->toEqual(0.1)
-//        ->and(num(100)->variationFrom(110)->raw())
-//        ->toBeFloat()
-//        ->toEqual(-0.0909090909);
-//});

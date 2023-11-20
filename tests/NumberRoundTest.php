@@ -2,15 +2,14 @@
 
 use Numerable\Enums\RoundMode;
 use Numerable\Number;
-use Numerable\Numerable;
 
-it('can do a simple format', function () {
+it('can do a simple round', function () {
     expect(Number::round(22.32))
         ->toBeFloat()
         ->toEqual(22.0);
 });
 
-it('can do a simple format using helper', function () {
+it('can do a simple round using helper', function () {
     expect(num()->round(22.32))
         ->toBeFloat()
         ->toEqual(22.0);
@@ -20,28 +19,28 @@ it('can round ralf down', function () {
     expect(num(1.23)->round()->raw())
         ->toBeFloat()
         ->toEqual(1.0)
-        ->and(num(1.23)->round(1)->raw())
+        ->and(num(1.23)->round(1, RoundMode::HALF_DOWN)->raw())
         ->toBeFloat()
         ->toEqual(1.2)
-        ->and(num(1.25)->round(1)->raw())
+        ->and(num(1.25)->round(1, RoundMode::HALF_DOWN)->raw())
         ->toBeFloat()
         ->toEqual(1.2)
-        ->and(num(1.251)->round(1)->raw())
+        ->and(num(1.251)->round(1, RoundMode::HALF_DOWN)->raw())
         ->toBeFloat()
         ->toEqual(1.3);
 });
 
 it('can round ralf up', function () {
-    expect(num(1.23)->round(0, RoundMode::HALF_UP)->raw())
+    expect(num(1.23)->round()->raw())
         ->toBeFloat()
         ->toEqual(1.0)
-        ->and(num(1.23)->round(1, RoundMode::HALF_UP)->raw())
+        ->and(num(1.23)->round(1)->raw())
         ->toBeFloat()
         ->toEqual(1.2)
-        ->and(num(1.25)->round(1, RoundMode::HALF_UP)->raw())
+        ->and(num(1.25)->round(1)->raw())
         ->toBeFloat()
         ->toEqual(1.3)
-        ->and(num(1.251)->round(1, RoundMode::HALF_UP)->raw())
+        ->and(num(1.251)->round(1)->raw())
         ->toBeFloat()
         ->toEqual(1.3);
 });

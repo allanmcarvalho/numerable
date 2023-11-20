@@ -18,7 +18,7 @@ class Number
      */
     public static function abs(int|float $value): int|float
     {
-        return self::abs($value);
+        return abs($value);
     }
 
     /**
@@ -39,7 +39,7 @@ class Number
      */
     public static function diff(int|float $value1, int|float $value2): int|float
     {
-        return $value1 - $value2;
+        return static::abs($value1 - $value2);
     }
 
     /**
@@ -252,7 +252,7 @@ class Number
         int|RoundMode $mode = RoundMode::HALF_UP
     ): int|float {
         $parts = self::round($value / $multiple, 0, $mode);
-        return $parts * $multiple;
+        return self::round($parts * $multiple, 10);
     }
 
     /**
