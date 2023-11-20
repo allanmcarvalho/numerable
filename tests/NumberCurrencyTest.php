@@ -80,9 +80,9 @@ it('can format with 4 places', function () {
 
 it('can format with 4 precision', function () {
     $number = num(new Numerable(10.2222));
-    $formatted = $number->toCurrency(places: 4, precision: 4);
+    $formatted = $number->toCurrency(places: 2, precision: 3);
 
     expect($formatted)
         ->toBeString()
-        ->toEqual("$10.22");
+        ->toEqual("$10.222");
 });

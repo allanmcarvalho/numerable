@@ -91,4 +91,15 @@ class Numerable
     {
         return Number::toInteger($this->number, $mode);
     }
+
+    /**
+     * Format the instance to a percentage.
+     */
+    public function toPercentage(
+        string $locale = null,
+        int $precision = 2,
+        bool $sourceHumanized = false,
+    ): string {
+        return Number::toPercentage($this->number, $locale, $precision, $sourceHumanized);
+    }
 }

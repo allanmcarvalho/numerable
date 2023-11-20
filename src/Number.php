@@ -71,11 +71,9 @@ class Number
             $formatter = new NumberFormatter($locale ?? config('app.locale', 'en'), $style);
             if ($places !== null) {
                 $formatter->setAttribute(NumberFormatter::MIN_FRACTION_DIGITS, $places);
-                $formatter->setAttribute(NumberFormatter::MAX_FRACTION_DIGITS, $places);
             }
             if ($precision !== null) {
-                $formatter->setAttribute(NumberFormatter::MIN_SIGNIFICANT_DIGITS, $precision);
-                $formatter->setAttribute(NumberFormatter::MAX_SIGNIFICANT_DIGITS, $precision);
+                $formatter->setAttribute(NumberFormatter::MAX_FRACTION_DIGITS, $precision);
             }
             if ($pattern !== null) {
                 $formatter->setPattern($pattern);
@@ -123,7 +121,7 @@ class Number
     }
 
     /**
-     * Parse the given number to a currency.
+     * Format the given number to a currency.
      */
     public static function toCurrency(
         int|float $value,
@@ -164,5 +162,18 @@ class Number
         }
 
         return intval($mode === null ? $value : round($value, mode: $mode));
+    }
+
+    /**
+     * Format the given number to a percentage.
+     */
+    public static function toPercentage(
+        int|float $value,
+        string $locale = null,
+        int $precision = 2,
+        bool $sourceHumanized = false,
+    ): string {
+        return self::getIntlFormatter($locale, NumberFormatter::PERCENT, $precision, $precision)
+            ->format($sourceHumanized ? $value / 100 : $value);
     }
 }

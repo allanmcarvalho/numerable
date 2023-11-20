@@ -29,6 +29,12 @@ it('can cast int to float and float to int', function () {
         ->toEqual(10);
 });
 
+it('can cast int to int', function () {
+    expect(Number::from(10)->toInteger())
+        ->toBeInt()
+        ->toEqual(10);
+});
+
 it('can round in many ways', function () {
     $number1 = Number::from(2.5);
     $number2 = Number::from(2.4);

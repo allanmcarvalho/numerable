@@ -44,6 +44,7 @@ $number->toCurrency(); // $15.20
 $number->toCurrency('BRL', 'pt_BR'); // R$15,20
 $number->toFloat(); // 15.2
 $number->toInteger(); // 15
+$number->toPercentage(sourceHumanized: true); // 15.00%
     
 
 ```
@@ -58,6 +59,7 @@ $number->toInteger(); // 15
 - **toCurrency** - Format number to currency. Available as static method and instance method.
 - **toFloat** - Format number to float. Available as static method and instance method.
 - **toInteger** - Format number to integer. Available as static method and instance method.
+- **toPercentage** - Format number to percent. Available as static method and instance method.
 
 
 
