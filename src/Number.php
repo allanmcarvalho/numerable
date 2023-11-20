@@ -2,11 +2,14 @@
 
 namespace Numerable;
 
+use Illuminate\Support\Collection;
 use InvalidArgumentException;
 use NumberFormatter;
 
 class Number
 {
+    protected static Collection $formatters;
+
     /**
      * Sum the given values.
      */
@@ -51,6 +54,37 @@ class Number
     }
 
     /**
+     * Get and store a new NumberFormatter instance.
+     */
+    public static function getIntlFormatter(
+        ?string $locale,
+        int $style,
+        ?int $places = null,
+        ?int $precision = null,
+        ?string $pattern = null,
+    ): NumberFormatter {
+        $key = "$locale::$style::$places::$precision::$pattern";
+        if (empty(self::$formatters)) {
+            self::$formatters = new Collection();
+        }
+        return self::$formatters->getOrPut($key, function () use ($locale, $style, $places, $precision, $pattern) {
+            $formatter = new NumberFormatter($locale ?? config('app.locale', 'en'), $style);
+            if ($places !== null) {
+                $formatter->setAttribute(NumberFormatter::MIN_FRACTION_DIGITS, $places);
+                $formatter->setAttribute(NumberFormatter::MAX_FRACTION_DIGITS, $places);
+            }
+            if ($precision !== null) {
+                $formatter->setAttribute(NumberFormatter::MIN_SIGNIFICANT_DIGITS, $precision);
+                $formatter->setAttribute(NumberFormatter::MAX_SIGNIFICANT_DIGITS, $precision);
+            }
+            if ($pattern !== null) {
+                $formatter->setPattern($pattern);
+            }
+            return $formatter;
+        });
+    }
+
+    /**
      * Multiply the given values.
      */
     public static function multiply(int|float ...$values): float|int
@@ -86,6 +120,29 @@ class Number
         }
 
         return $result;
+    }
+
+    /**
+     * Parse the given number to a currency.
+     */
+    public static function toCurrency(
+        int|float $value,
+        string $currency = null,
+        string $locale = null,
+        bool $accounting = false,
+        bool $useIntlCode = false,
+        int $places = null,
+        int $precision = null,
+    ): string {
+        $style = $accounting ? NumberFormatter::CURRENCY_ACCOUNTING : NumberFormatter::CURRENCY;
+        $numberFormatter = self::getIntlFormatter($locale, $style, $places, $precision);
+        if ($useIntlCode) {
+            $pattern = trim(str_replace('¤', '¤¤', $numberFormatter->getPattern()));
+            $numberFormatter = clone $numberFormatter;
+            $numberFormatter->setPattern($pattern);
+        }
+        $currency = $currency ?? config('numerable.default_currency', 'USD');
+        return $numberFormatter->formatCurrency($value, $currency);
     }
 
     /**

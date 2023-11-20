@@ -62,6 +62,20 @@ class Numerable
     }
 
     /**
+     * Format the instance to a currency.
+     */
+    public function toCurrency(
+        string $currency = null,
+        string $locale = null,
+        bool $accounting = false,
+        bool $useIntlCode = false,
+        int $places = null,
+        int $precision = null,
+    ): string {
+        return Number::toCurrency($this->number, $currency, $locale, $accounting, $useIntlCode, $places, $precision);
+    }
+
+    /**
      * Parse to a float instance.
      */
     public function toFloat(): float

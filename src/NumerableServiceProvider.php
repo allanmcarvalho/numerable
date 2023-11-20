@@ -15,6 +15,7 @@ class NumerableServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('numerable');
+            ->name('numerable')
+            ->hasConfigFile();
     }
 }
