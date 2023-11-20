@@ -2,6 +2,8 @@
 
 namespace Numerable;
 
+use Numerable\Enums\RoundMode;
+
 class Numerable
 {
     public function __construct(
@@ -147,6 +149,14 @@ class Numerable
     }
 
     /**
+     * Round the instance number.
+     */
+    public function round(int $precision = 0, int|RoundMode $mode = RoundMode::HALF_DOWN): static
+    {
+        return new static(Number::round($this->number, $precision, $mode));
+    }
+
+    /**
      * Subtract the given values to the number.
      */
     public function sub(Numerable|int|float|string ...$values): static
@@ -195,9 +205,9 @@ class Numerable
 
     /**
      * Parse to an integer instance.
-     * You can provide as argument the round type (e.g.: PHP_ROUND_HALF_UP).
+     * You can provide as argument the round type (e.g.: PHP_ROUND_HALF_UP or RoundMode::FLOOR).
      */
-    public function toInteger(int $mode = null): int
+    public function toInteger(int|RoundMode $mode = RoundMode::FLOOR): int
     {
         return Number::toInteger($this->number, $mode);
     }

@@ -86,6 +86,7 @@ $number->toReadableSize(short: false); // 15.2 bytes
 - **multiply** - Multiply numbers. Available as static method.
 - **multiplyBy** - Multiply number by another number. Available as instance method.
 - **parse** - Parse string to number. Available as static method.
+- **round** - Round number. Available as static method and instance method.
 - **sub** - Subtract numbers. Available as static method and instance method.
 - **toCurrency** - Format number to currency. Available as static method and instance method.
 - **toFloat** - Format number to float. Available as static method and instance method.

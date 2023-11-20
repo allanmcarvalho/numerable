@@ -2,10 +2,12 @@
 
 namespace Numerable;
 
+use Exception;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
 use NumberFormatter;
+use Numerable\Enums\RoundMode;
 use function Laravel\Prompts\select;
 
 class Number
@@ -210,6 +212,23 @@ class Number
     }
 
     /**
+     * Round the given value.
+     */
+    public static function round(int|float $value, int $precision = 0, int|RoundMode $mode = RoundMode::HALF_UP): int|float
+    {
+        $mode = is_int($mode) ? RoundMode::from($mode) : $mode;
+        $multiplier = pow(10, $precision);
+        return match($mode) {
+            RoundMode::HALF_UP,
+            RoundMode::HALF_ODD,
+            RoundMode::HALF_EVEN,
+            RoundMode::HALF_DOWN => round($value, $precision, $mode->value),
+            RoundMode::FLOOR => floor($value * $multiplier) / $multiplier,
+            RoundMode::CEIL => ceil($value * $multiplier) / $multiplier,
+        };
+    }
+
+    /**
      * Subtract the given values.
      */
     public static function sub(int|float $startValue = 0, int|float ...$values): float|int
@@ -279,13 +298,13 @@ class Number
      * Parse the given number to an integer type.
      * You can provide as argument the round type (e.g.: PHP_ROUND_HALF_UP).
      */
-    public static function toInteger(int|float $value, int $mode = null): int
+    public static function toInteger(int|float $value, int|RoundMode $mode = RoundMode::FLOOR): int
     {
         if (is_int($value)) {
             return $value;
         }
 
-        return intval($mode === null ? $value : round($value, mode: $mode));
+        return intval($mode === null ? $value : self::round($value, mode: $mode));
     }
 
     /**
