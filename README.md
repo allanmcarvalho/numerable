@@ -32,6 +32,7 @@ Number::sub(20, 4, 1); // 15
 Number::toCurrency(213.21); // $213.21
 Number::toFloat(1_000); // 1000.0
 Number::toInteger(23.21); // 23
+Number::toPercentage(0.52, precision: 0); // 52%
 
 //or 
 
