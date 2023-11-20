@@ -24,7 +24,6 @@ it('can format with default params', function () {
         ->toEqual('100.00%');
 });
 
-
 it('can format with source humanized', function () {
     $number = num(new Numerable(100));
     $formatted = $number->toPercentage(sourceHumanized: true);
@@ -33,7 +32,6 @@ it('can format with source humanized', function () {
         ->toBeString()
         ->toEqual('100.00%');
 });
-
 
 it('can format with zero precision', function () {
     $number = num(new Numerable(0.98));
@@ -50,5 +48,5 @@ it('can format in other locale', function () {
 
     expect($formatted)
         ->toBeString()
-        ->toEqual("1.234,56%");
+        ->toEqual('1.234,56%');
 });
