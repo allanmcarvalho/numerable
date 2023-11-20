@@ -91,6 +91,7 @@ $number->toReadableSize(short: false); // 15.2 bytes
 - **round** - Round number. Available as static method and instance method.
 - **roundAsMultipleOf** - Round number as multiple of another number. Available as static method and instance method.
 - **sub** - Subtract numbers. Available as static method and instance method.
+- **takeAPart** - Take a part of number. Available as static method and instance method.
 - **toCurrency** - Format number to currency. Available as static method and instance method.
 - **toFloat** - Format number to float. Available as static method and instance method.
 - **toFormatted** - Format number to formatted string. Available as static method and instance method.
