@@ -44,6 +44,7 @@ $number = Number::from(10)
 $number->toCurrency(); // $15.20
 $number->toCurrency('BRL', 'pt_BR'); // R$15,20
 $number->toFloat(); // 15.2
+$number->toFormat(places: 0, suffix: ' oranges'); // 15 oranges
 $number->toInteger(); // 15
 $number->toPercentage(sourceHumanized: true); // 15.00%
     
@@ -59,15 +60,9 @@ $number->toPercentage(sourceHumanized: true); // 15.00%
 - **sub** - Subtract numbers. Available as static method and instance method.
 - **toCurrency** - Format number to currency. Available as static method and instance method.
 - **toFloat** - Format number to float. Available as static method and instance method.
+- **toFormatted** - Format number to formatted string. Available as static method and instance method.
 - **toInteger** - Format number to integer. Available as static method and instance method.
 - **toPercentage** - Format number to percent. Available as static method and instance method.
-
-
-
-```php
-$numerable = new Numerable\Numerable();
-echo $numerable->echoPhrase('Hello, Numerable!');
-```
 
 ## Testing
 

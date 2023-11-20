@@ -84,6 +84,20 @@ class Numerable
     }
 
     /**
+     * Format the instance to a formatted number.
+     */
+    public function toFormat(
+        string $locale = null,
+        int $places = null,
+        int $precision = null,
+        string $prefix = '',
+        string $suffix = '',
+        string $pattern = null,
+    ): string {
+        return Number::toFormat($this->number, $locale, $places, $precision, $prefix, $suffix, $pattern);
+    }
+
+    /**
      * Parse to an integer instance.
      * You can provide as argument the round type (e.g.: PHP_ROUND_HALF_UP).
      */

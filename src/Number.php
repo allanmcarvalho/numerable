@@ -155,6 +155,23 @@ class Number
     }
 
     /**
+     * Format the given number type to a formatted number.
+     */
+    public static function toFormat(
+        int|float $value,
+        string $locale = null,
+        int $places = null,
+        int $precision = null,
+        string $prefix = '',
+        string $suffix = '',
+        string $pattern = null,
+    ): string {
+        $formatter = self::getIntlFormatter($locale, NumberFormatter::DECIMAL, $places, $precision, $pattern);
+
+        return $prefix . $formatter->format($value) . $suffix;
+    }
+
+    /**
      * Parse the given number to an integer type.
      * You can provide as argument the round type (e.g.: PHP_ROUND_HALF_UP).
      */
