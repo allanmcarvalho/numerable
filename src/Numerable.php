@@ -93,8 +93,9 @@ class Numerable
         string $prefix = '',
         string $suffix = '',
         string $pattern = null,
+        bool $delta = false,
     ): string {
-        return Number::toFormat($this->number, $locale, $places, $precision, $prefix, $suffix, $pattern);
+        return Number::toFormat($this->number, $locale, $places, $precision, $prefix, $suffix, $pattern, $delta);
     }
 
     /**

@@ -77,3 +77,15 @@ it('can format with pattern', function () {
         ->toBeString()
         ->toEqual("012.430");
 });
+
+it('can format with delta', function () {
+    expect(num(43.21)->toFormat(delta: true))
+        ->toBeString()
+        ->toEqual("+43.21")
+        ->and(num(-43.21)->toFormat(delta: true))
+        ->toBeString()
+        ->toEqual("-43.21")
+        ->and(num(43.21)->toFormat(prefix: 'foobar ', delta: true))
+        ->toBeString()
+        ->toEqual("foobar +43.21");
+});

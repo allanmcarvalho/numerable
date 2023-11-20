@@ -167,8 +167,12 @@ class Number
         string $prefix = '',
         string $suffix = '',
         string $pattern = null,
+        bool $delta = false,
     ): string {
         $formatter = self::getIntlFormatter($locale, NumberFormatter::DECIMAL, $places, $precision, $pattern);
+        if ($delta) {
+            $prefix = $value > 0 ? $prefix.'+' : $prefix;
+        }
 
         return $prefix . $formatter->format($value) . $suffix;
     }
