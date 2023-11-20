@@ -59,14 +59,15 @@ class Number
     public static function getIntlFormatter(
         ?string $locale,
         int $style,
-        ?int $places = null,
-        ?int $precision = null,
-        ?string $pattern = null,
+        int $places = null,
+        int $precision = null,
+        string $pattern = null,
     ): NumberFormatter {
         $key = "$locale::$style::$places::$precision::$pattern";
         if (empty(self::$formatters)) {
             self::$formatters = new Collection();
         }
+
         return self::$formatters->getOrPut($key, function () use ($locale, $style, $places, $precision, $pattern) {
             $formatter = new NumberFormatter($locale ?? config('app.locale', 'en'), $style);
             if ($places !== null) {
@@ -80,6 +81,7 @@ class Number
             if ($pattern !== null) {
                 $formatter->setPattern($pattern);
             }
+
             return $formatter;
         });
     }
@@ -142,6 +144,7 @@ class Number
             $numberFormatter->setPattern($pattern);
         }
         $currency = $currency ?? config('numerable.default_currency', 'USD');
+
         return $numberFormatter->formatCurrency($value, $currency);
     }
 
