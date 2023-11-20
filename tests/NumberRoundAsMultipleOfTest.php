@@ -1,8 +1,6 @@
 <?php
 
-use Numerable\Enums\RoundMode;
 use Numerable\Number;
-use Numerable\Numerable;
 
 it('can do a simple format', function () {
     expect(Number::roundAsMultipleOf(22.32, 0.1))

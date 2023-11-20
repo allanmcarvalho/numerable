@@ -1,7 +1,6 @@
 <?php
 
 use Numerable\Number;
-use Numerable\Numerable;
 
 it('do a simple diff', function () {
     expect(Number::diff(10, 8))
@@ -19,7 +18,7 @@ it('diff a number', function () {
     expect(num(-100)->diff(100)->raw())
         ->toBeInt()
         ->toEqual(200)
-    ->and(num(100)->diff(-100)->raw())
+        ->and(num(100)->diff(-100)->raw())
         ->toBeInt()
         ->toEqual(200)
         ->and(num(100)->diff(100)->raw())
@@ -29,4 +28,3 @@ it('diff a number', function () {
         ->toBeFloat()
         ->toEqual(1.5);
 });
-

@@ -13,7 +13,7 @@ enum RoundMode: int
 
     public function getLabel(): string
     {
-        return match($this) {
+        return match ($this) {
             self::HALF_UP => 'Half Up',
             self::HALF_DOWN => 'Half Down',
             self::HALF_EVEN => 'Half Even',

@@ -54,11 +54,6 @@ class Numerable
         return new static(Number::divide($this->number, Number::from($divisor)->raw(), $zeroSafeCallback));
     }
 
-    /**
-     * @param  \Numerable\Numerable|int|float|string  $value
-     * @param  bool  $strict
-     * @return bool
-     */
     public function equal(Numerable|int|float|string $value, bool $strict = false): bool
     {
         return Number::equal($this->number, Number::from($value)->raw(), $strict);
@@ -175,7 +170,7 @@ class Numerable
     /**
      * Round the instance number as a multiple of the given value.
      */
-    public function roundAsMultipleOf( int|float $multiple, int|RoundMode $mode = RoundMode::HALF_UP): static
+    public function roundAsMultipleOf(int|float $multiple, int|RoundMode $mode = RoundMode::HALF_UP): static
     {
         return new static(Number::roundAsMultipleOf($this->number, $multiple, $mode));
     }
