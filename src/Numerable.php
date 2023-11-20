@@ -191,6 +191,14 @@ class Numerable
     }
 
     /**
+     * Take a part of the instance number.
+     */
+    public function takeAPart(Numerable|int|float|string $value): static
+    {
+        return new static(Number::takeAPart($this->number, Number::from($value)->raw()));
+    }
+
+    /**
      * Format the instance to a currency.
      */
     public function toCurrency(

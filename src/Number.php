@@ -252,7 +252,7 @@ class Number
         int|RoundMode $mode = RoundMode::HALF_UP
     ): int|float {
         $parts = self::round($value / $multiple, 0, $mode);
-        return self::round($parts * $multiple, 10);
+        return self::round($parts * $multiple,ini_get('precision') - 1);
     }
 
     /**
@@ -266,6 +266,14 @@ class Number
         }
 
         return $result;
+    }
+
+    /**
+     * Take a part of the given value.
+     */
+    public static function takeAPart(int|float $value, int|float $percentage): float|int
+    {
+        return $value * $percentage;
     }
 
     /**
@@ -391,6 +399,6 @@ class Number
      */
     public static function variation(int|float $startValue, int|float $endValue): float|int
     {
-        return self::round(1 - ($endValue / $startValue), 10);
+        return self::round(1 - ($endValue / $startValue), ini_get('precision') - 1);
     }
 }

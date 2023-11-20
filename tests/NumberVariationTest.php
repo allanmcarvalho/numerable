@@ -31,5 +31,5 @@ it('calculate a variation from', function () {
         ->toEqual(0.1)
         ->and(num(100)->variationFrom(110)->raw())
         ->toBeFloat()
-        ->toEqual(-0.0909090909);
+        ->toEqual(-0.0909090909091);
 });

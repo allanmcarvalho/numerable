@@ -11,7 +11,7 @@ it('can do a simple format', function () {
 });
 
 it('can do a simple format using helper', function () {
-    expect(Number::roundAsMultipleOf(22.36, 0.1))
+    expect(num()->roundAsMultipleOf(22.36, 0.1))
         ->toBeFloat()
         ->toEqual(22.4);
 });
