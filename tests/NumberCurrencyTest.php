@@ -57,7 +57,7 @@ it('can format without account', function () {
 
     expect($formatted)
         ->toBeString()
-        ->toEqual("-$15.15");
+        ->toEqual('-$15.15');
 });
 
 it('can format with account', function () {
@@ -66,7 +66,7 @@ it('can format with account', function () {
 
     expect($formatted)
         ->toBeString()
-        ->toEqual("($15.15)");
+        ->toEqual('($15.15)');
 });
 
 it('can format with 4 places', function () {
@@ -75,7 +75,7 @@ it('can format with 4 places', function () {
 
     expect($formatted)
         ->toBeString()
-        ->toEqual("$10.2222");
+        ->toEqual('$10.2222');
 });
 
 it('can format with 4 precision', function () {
@@ -84,5 +84,5 @@ it('can format with 4 precision', function () {
 
     expect($formatted)
         ->toBeString()
-        ->toEqual("$10.222");
+        ->toEqual('$10.222');
 });
