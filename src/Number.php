@@ -3,8 +3,10 @@
 namespace Numerable;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use InvalidArgumentException;
 use NumberFormatter;
+use function Laravel\Prompts\select;
 
 class Number
 {
@@ -205,5 +207,34 @@ class Number
     ): string {
         return self::getIntlFormatter($locale, NumberFormatter::PERCENT, $precision, $precision)
             ->format($sourceHumanized ? $value / 100 : $value);
+    }
+
+    /**
+     * Format the given number to a readable size.
+     */
+    public static function toReadableSize(
+        int|float $size,
+        string $locale = null,
+        bool $short = true,
+        int $places = 0,
+        int $precision = 2
+    ): string {
+        $params = match (true) {
+            $size < pow(1024, 1) => [$size, 'byte', 'B'],
+            $size < pow(1024, 2) => [$size / pow(1024, 1), 'kilobyte', 'KB'],
+            $size < pow(1024, 3) => [$size / pow(1024, 2), 'megabyte', 'MB'],
+            $size < pow(1024, 4) => [$size / pow(1024, 3), 'gigabyte', 'GB'],
+            $size < pow(1024, 5) => [$size / pow(1024, 4), 'terabyte', 'TB'],
+            $size < pow(1024, 6) => [$size / pow(1024, 5), 'petabyte', 'PB'],
+            default => [$size / pow(1024, 6), 'exabyte', 'EB'],
+        };
+
+        return self::toFormat(
+            $params[0],
+            $locale,
+            $places,
+            $precision,
+            suffix: $short ? $params[2] : ' '.Str::plural($params[1], $params[0]),
+        );
     }
 }

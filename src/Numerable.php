@@ -124,4 +124,16 @@ class Numerable
     ): string {
         return Number::toPercentage($this->number, $locale, $precision, $sourceHumanized);
     }
+
+    /**
+     * Format the instance to a readable size.
+     */
+    public function toReadableSize(
+        string $locale = null,
+        bool $short = true,
+        int $places = 0,
+        int $precision = 2
+    ): string {
+        return Number::toReadableSize($this->number, $locale, $short, $places, $precision);
+    }
 }

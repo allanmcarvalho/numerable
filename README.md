@@ -34,6 +34,7 @@ Number::toFloat(1_000); // 1000.0
 Number::toInteger(23.21); // 23
 Number::toOrdinal(1); // 1st
 Number::toPercentage(0.52, precision: 0); // 52%
+Number::toReadableSize(1024 * 1024 * 512); // 512MB
 
 //or 
 
@@ -49,6 +50,7 @@ $number->toFormat(places: 0, suffix: ' oranges'); // 15 oranges
 $number->toInteger(); // 15
 $number->toOrdinal(); // 15th
 $number->toPercentage(sourceHumanized: true); // 15.00%
+$number->toReadableSize(short: false); // 15.2 bytes
     
 
 ```
