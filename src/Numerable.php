@@ -107,6 +107,14 @@ class Numerable
     }
 
     /**
+     * Format the instance to an ordinal.
+     */
+    public function toOrdinal(string $locale = null): string
+    {
+        return Number::toOrdinal($this->toInteger(), $locale);
+    }
+
+    /**
      * Format the instance to a percentage.
      */
     public function toPercentage(

@@ -185,6 +185,16 @@ class Number
     }
 
     /**
+     * Format the given number to an ordinal.
+     */
+    public static function toOrdinal(
+        int $value,
+        string $locale = null,
+    ): string {
+        return self::getIntlFormatter($locale, NumberFormatter::ORDINAL)->format($value);
+    }
+
+    /**
      * Format the given number to a percentage.
      */
     public static function toPercentage(

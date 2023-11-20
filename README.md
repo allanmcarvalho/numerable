@@ -32,6 +32,7 @@ Number::sub(20, 4, 1); // 15
 Number::toCurrency(213.21); // $213.21
 Number::toFloat(1_000); // 1000.0
 Number::toInteger(23.21); // 23
+Number::toOrdinal(1); // 1st
 Number::toPercentage(0.52, precision: 0); // 52%
 
 //or 
@@ -46,6 +47,7 @@ $number->toCurrency('BRL', 'pt_BR'); // R$15,20
 $number->toFloat(); // 15.2
 $number->toFormat(places: 0, suffix: ' oranges'); // 15 oranges
 $number->toInteger(); // 15
+$number->toOrdinal(); // 15th
 $number->toPercentage(sourceHumanized: true); // 15.00%
     
 
@@ -62,6 +64,7 @@ $number->toPercentage(sourceHumanized: true); // 15.00%
 - **toFloat** - Format number to float. Available as static method and instance method.
 - **toFormatted** - Format number to formatted string. Available as static method and instance method.
 - **toInteger** - Format number to integer. Available as static method and instance method.
+- **toOrdinal** - Format number to ordinal. Available as static method and instance method.
 - **toPercentage** - Format number to percent. Available as static method and instance method.
 
 ## Testing
