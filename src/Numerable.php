@@ -21,6 +21,16 @@ class Numerable
     }
 
     /**
+     * @param  \Numerable\Numerable|int|float|string  $value
+     * @param  bool  $strict
+     * @return bool
+     */
+    public function equal(Numerable|int|float|string $value, bool $strict = false): bool
+    {
+        return Number::equal($this->number, Number::from($value)->raw(), $strict);
+    }
+
+    /**
      * Divide a given dividend by the number.
      */
     public function divide(Numerable|int|float|string $dividend, callable $zeroSafeCallback = null): static
@@ -31,15 +41,100 @@ class Numerable
     /**
      * Divide the number by the given divisor.
      */
-    public function dividedBy(Numerable|int|float|string $divisor, callable $zeroSafeCallback = null): static
+    public function divideBy(Numerable|int|float|string $divisor, callable $zeroSafeCallback = null): static
     {
         return new static(Number::divide($this->number, Number::from($divisor)->raw(), $zeroSafeCallback));
     }
 
     /**
+     * Check if the instance is equal to the given value.
+     */
+    public function gt(Numerable|int|float|string $value): bool
+    {
+        return Number::gt($this->number, Number::from($value)->raw());
+    }
+
+    /**
+     * Check if the instance is greater than or equal to the given value.
+     */
+    public function gte(Numerable|int|float|string $value): bool
+    {
+        return Number::gte($this->number, Number::from($value)->raw());
+    }
+
+    /**
+     * Check if the instance is an even number.
+     */
+    public function isEven(): bool
+    {
+        return Number::isEven($this->number);
+    }
+
+    /**
+     * Check if the instance is a float number.
+     */
+    public function isFloat(): bool
+    {
+        return Number::isFloat($this->number);
+    }
+
+    /**
+     * Check if the instance is an integer number.
+     */
+    public function isInteger(): bool
+    {
+        return Number::isInteger($this->number);
+    }
+
+    public function isMultipleOf(Numerable|int|float|string $multiple): bool
+    {
+        return Number::isMultipleOf($this->number, Number::from($multiple)->raw());
+    }
+
+    /**
+     * Check if the instance is a negative number.
+     */
+    public function isNegative(): bool
+    {
+        return Number::isNegative($this->number);
+    }
+
+    /**
+     * Check if the instance is an odd number.
+     */
+    public function isOdd(): bool
+    {
+        return Number::isOdd($this->number);
+    }
+
+    /**
+     * Check if the instance is a positive number.
+     */
+    public function isPositive(): bool
+    {
+        return Number::isPositive($this->number);
+    }
+
+    /**
+     * Check if the instance is less than the given value.
+     */
+    public function lt(Numerable|int|float|string $value): bool
+    {
+        return Number::lt($this->number, Number::from($value)->raw());
+    }
+
+    /**
+     * Check if the instance is less than or equal to the given value.
+     */
+    public function lte(Numerable|int|float|string $value): bool
+    {
+        return Number::lte($this->number, Number::from($value)->raw());
+    }
+
+    /**
      * Multiply the given values to the number.
      */
-    public function multiply(Numerable|int|float|string ...$values): static
+    public function multiplyBy(Numerable|int|float|string ...$values): static
     {
         $numbers = array_map(fn ($value) => Number::from($value)->raw(), $values);
 

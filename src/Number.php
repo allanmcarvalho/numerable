@@ -41,6 +41,16 @@ class Number
     }
 
     /**
+     * Compare two numbers.
+     */
+    public static function equal(int|float $value1, int|float $value2, bool $strict = false): bool
+    {
+        return $strict ?
+            $value1 === $value2 :
+            $value1 == $value2;
+    }
+
+    /**
      * Get a new numerable object from the given number.
      */
     public static function from(Numerable|int|float|string|null $number): ?Numerable
@@ -84,6 +94,94 @@ class Number
 
             return $formatter;
         });
+    }
+
+    /**
+     * Check if the value 1 is greater than the value 2.
+     */
+    public static function gt(int|float $value1, int|float $value2): bool
+    {
+        return $value1 > $value2;
+    }
+
+    /**
+     * Check if the value 1 is greater than or equal to the value 2.
+     */
+    public static function gte(int|float $value1, int|float $value2): bool
+    {
+        return $value1 >= $value2;
+    }
+
+    /**
+     * Check if the given value is an even number.
+     */
+    public static function isEven(int|float $value): bool
+    {
+        return floor($value) % 2 === 0;
+    }
+
+    /**
+     * Check if the given value is a float.
+     */
+    public static function isFloat(int|float $value): bool
+    {
+        return is_float($value);
+    }
+
+    /**
+     * Check if the given value is an integer.
+     */
+    public static function isInteger(int|float $value): bool
+    {
+        return is_int($value);
+    }
+
+    /**
+     * Check if the given value is a multiple of the given multiple.
+     */
+    public static function isMultipleOf(int|float $value, int|float $multiple): bool
+    {
+        return $value % $multiple === 0;
+    }
+
+    /**
+     * Check if the given value is a negative number.
+     */
+    public static function isNegative(int|float $value): bool
+    {
+        return $value < 0;
+    }
+
+    /**
+     * Check if the given value is an odd number.
+     */
+    public static function isOdd(int|float $value): bool
+    {
+        return floor($value) % 2 !== 0;
+    }
+
+    /**
+     * Check if the given value is a positive number.
+     */
+    public static function isPositive(int|float $value): bool
+    {
+        return $value >= 0;
+    }
+
+    /**
+     * Check if the value 1 is less than the value 2.
+     */
+    public static function lt(int|float $value1, int|float $value2): bool
+    {
+        return $value1 < $value2;
+    }
+
+    /**
+     * Check if the value 1 is less than or equal to the value 2.
+     */
+    public static function lte(int|float $value1, int|float $value2): bool
+    {
+        return $value1 <= $value2;
     }
 
     /**

@@ -23,7 +23,7 @@ it('can do a simple multiplication using helper', function () {
 
 it('can multiply int values', function () {
     $number = num(new Numerable(10));
-    $number2 = $number->multiply(10, 5);
+    $number2 = $number->multiplyBy(10, 5);
 
     expect($number)
         ->toEqual(new Numerable(10))
@@ -39,7 +39,7 @@ it('can multiply int values', function () {
 
 it('can multiply float values', function () {
     $number = num(new Numerable(10.5));
-    $number2 = $number->multiply(100, 50);
+    $number2 = $number->multiplyBy(100, 50);
 
     expect($number)
         ->toEqual(new Numerable(10.5))
@@ -55,7 +55,7 @@ it('can multiply float values', function () {
 
 it('can multiply with mixed args', function () {
     $number = num(new Numerable(5));
-    $number2 = $number->multiply(1000, '4', 5.5, new Numerable(2.5));
+    $number2 = $number->multiplyBy(1000, '4', 5.5, new Numerable(2.5));
 
     expect($number)
         ->toEqual(new Numerable(5))

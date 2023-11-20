@@ -25,7 +25,13 @@ use Numerable\Numerable;
 use Numerable\Number;
 
 Number::add(2, 4, 6); // 12
+Number::equal(2.0, 2); // true
+Number::equal(2.0, 2, strict: true); // false
 Number::divide(100, 2); // 50
+Number::gt(10, 11); // false
+Number::gte(11.0, 11); // true
+Number::lt(10, 11); // true
+Number::lte(11.0, 11); // true
 Number::multiply(2, 10, 5); // 100
 Number::parse('21.32%'); // 21.32
 Number::sub(20, 4, 1); // 15
@@ -41,8 +47,13 @@ Number::toReadableSize(1024 * 1024 * 512); // 512MB
 $number = Number::from(10)
     ->add(2) // now is 12
     ->divide(2.5) // now is 4.8
-    ->multiply(4) // now is 19.2
+    ->multiplyBy(4) // now is 19.2
     ->sub(4); // now is 15.2
+$number->equal(15.10); // false
+$number->gt(10); // true
+$number->gte(18); // false
+$number->lt(10); // false
+$number->lte(18); // true
 $number->toCurrency(); // $15.20
 $number->toCurrency('BRL', 'pt_BR'); // R$15,20
 $number->toFloat(); // 15.2
@@ -58,8 +69,22 @@ $number->toReadableSize(short: false); // 15.2 bytes
 ## Available methods
 
 - **add** - Add numbers. Available as static method and instance method.
+- **equal** - Compare numbers. Available as static method and instance method.
 - **divide** - Divide numbers. Available as static method and instance method.
-- **multiply** - Multiply numbers. Available as static method and instance method.
+- **divideBy** - Divide an instance value by a divisor. Available as instance method.
+- **gt** - Check if number is greater than another number. Available as static method and instance method.
+- **gte** - Check if number is greater than or equal to another number. Available as static method and instance method.
+- **isEven** - Check if number is even. Available as static method and instance method.
+- **isFloat** - Check if number is float. Available as static method and instance method.
+- **isInteger** - Check if number is integer. Available as static method and instance method.
+- **isMultipleOf** - Check if number is multiple of another number. Available as static method and instance method.
+- **isNegative** - Check if number is negative. Available as static method and instance method.
+- **isOdd** - Check if number is odd. Available as static method and instance.
+- **isPositive** - Check if number is positive. Available as static method and instance method.
+- **lt** - Check if number is less than another number. Available as static method and instance method.
+- **lte** - Check if number is less than or equal to another number. Available as static method and instance method.
+- **multiply** - Multiply numbers. Available as static method.
+- **multiplyBy** - Multiply number by another number. Available as instance method.
 - **parse** - Parse string to number. Available as static method.
 - **sub** - Subtract numbers. Available as static method and instance method.
 - **toCurrency** - Format number to currency. Available as static method and instance method.

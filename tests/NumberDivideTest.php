@@ -31,7 +31,7 @@ it('can do a simple division using helper', function () {
 
 it('can be divided by int values', function () {
     $number = num(new Numerable(10));
-    $number2 = $number->dividedBy(2);
+    $number2 = $number->divideBy(2);
 
     expect($number)
         ->toEqual(new Numerable(10))
@@ -47,7 +47,7 @@ it('can be divided by int values', function () {
 
 it('can be divided by float values even if zero', function () {
     $number = num(new Numerable(10));
-    $number2 = $number->dividedBy(0, fn () => 300);
+    $number2 = $number->divideBy(0, fn () => 300);
 
     expect($number)
         ->toEqual(new Numerable(10))
@@ -63,7 +63,7 @@ it('can be divided by float values even if zero', function () {
 
 it('can be divided by float values', function () {
     $number = num(new Numerable(10));
-    $number2 = $number->dividedBy(2.5);
+    $number2 = $number->divideBy(2.5);
 
     expect($number)
         ->toEqual(new Numerable(10))
