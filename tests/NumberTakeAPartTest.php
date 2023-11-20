@@ -1,7 +1,6 @@
 <?php
 
 use Numerable\Number;
-use Numerable\Numerable;
 
 it('can get a simple part', function () {
     expect(Number::takeAPart(100, 0.25))
