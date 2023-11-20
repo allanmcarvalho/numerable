@@ -2,7 +2,6 @@
 
 namespace Numerable;
 
-use Exception;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
@@ -233,7 +232,8 @@ class Number
     {
         $mode = is_int($mode) ? RoundMode::from($mode) : $mode;
         $multiplier = pow(10, $precision);
-        return match($mode) {
+
+        return match ($mode) {
             RoundMode::HALF_UP,
             RoundMode::HALF_ODD,
             RoundMode::HALF_EVEN,
@@ -252,6 +252,7 @@ class Number
         int|RoundMode $mode = RoundMode::HALF_UP
     ): int|float {
         $parts = self::round($value / $multiple, 0, $mode);
+
         return self::round($parts * $multiple, 10);
     }
 
@@ -318,7 +319,7 @@ class Number
             $prefix = $value > 0 ? $prefix.'+' : $prefix;
         }
 
-        return $prefix . $formatter->format($value) . $suffix;
+        return $prefix.$formatter->format($value).$suffix;
     }
 
     /**
