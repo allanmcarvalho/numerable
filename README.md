@@ -68,8 +68,10 @@ $number->toReadableSize(short: false); // 15.2 bytes
 
 ## Available methods
 
+- **abs** - Get absolute value. Available as static method and instance method.
 - **add** - Add numbers. Available as static method and instance method.
 - **equal** - Compare numbers. Available as static method and instance method.
+- **diff** - Get difference between numbers. Available as static method and instance method.
 - **divide** - Divide numbers. Available as static method and instance method.
 - **divideBy** - Divide an instance value by a divisor. Available as instance method.
 - **gt** - Check if number is greater than another number. Available as static method and instance method.
@@ -87,6 +89,7 @@ $number->toReadableSize(short: false); // 15.2 bytes
 - **multiplyBy** - Multiply number by another number. Available as instance method.
 - **parse** - Parse string to number. Available as static method.
 - **round** - Round number. Available as static method and instance method.
+- **roundAsMultipleOf** - Round number as multiple of another number. Available as static method and instance method.
 - **sub** - Subtract numbers. Available as static method and instance method.
 - **toCurrency** - Format number to currency. Available as static method and instance method.
 - **toFloat** - Format number to float. Available as static method and instance method.
@@ -94,6 +97,9 @@ $number->toReadableSize(short: false); // 15.2 bytes
 - **toInteger** - Format number to integer. Available as static method and instance method.
 - **toOrdinal** - Format number to ordinal. Available as static method and instance method.
 - **toPercentage** - Format number to percent. Available as static method and instance method.
+- **variation** - Get variation between numbers. Available as static method.
+- **variationFrom** - Get variation from a base number. Available as instance method.
+- **variationTo** - Get variation to a base number. Available as instance method.
 
 ## Testing
 

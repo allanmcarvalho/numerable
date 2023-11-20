@@ -13,6 +13,14 @@ class Numerable
     }
 
     /**
+     * Get absolute value of the number.
+     */
+    public function abs(): static
+    {
+        return new static(Number::abs($this->number));
+    }
+
+    /**
      * Add the given values to the number.
      */
     public function add(Numerable|int|float|string ...$values): static
@@ -23,13 +31,11 @@ class Numerable
     }
 
     /**
-     * @param  \Numerable\Numerable|int|float|string  $value
-     * @param  bool  $strict
-     * @return bool
+     * Get absolute value of the number.
      */
-    public function equal(Numerable|int|float|string $value, bool $strict = false): bool
+    public function diff(Numerable|int|float|string $value): static
     {
-        return Number::equal($this->number, Number::from($value)->raw(), $strict);
+        return new static(Number::diff($this->number, Number::from($value)->raw()));
     }
 
     /**
@@ -46,6 +52,16 @@ class Numerable
     public function divideBy(Numerable|int|float|string $divisor, callable $zeroSafeCallback = null): static
     {
         return new static(Number::divide($this->number, Number::from($divisor)->raw(), $zeroSafeCallback));
+    }
+
+    /**
+     * @param  \Numerable\Numerable|int|float|string  $value
+     * @param  bool  $strict
+     * @return bool
+     */
+    public function equal(Numerable|int|float|string $value, bool $strict = false): bool
+    {
+        return Number::equal($this->number, Number::from($value)->raw(), $strict);
     }
 
     /**
@@ -151,9 +167,17 @@ class Numerable
     /**
      * Round the instance number.
      */
-    public function round(int $precision = 0, int|RoundMode $mode = RoundMode::HALF_DOWN): static
+    public function round(int $precision = 0, int|RoundMode $mode = RoundMode::HALF_UP): static
     {
         return new static(Number::round($this->number, $precision, $mode));
+    }
+
+    /**
+     * Round the instance number as a multiple of the given value.
+     */
+    public function roundAsMultipleOf( int|float $multiple, int|RoundMode $mode = RoundMode::HALF_UP): static
+    {
+        return new static(Number::roundAsMultipleOf($this->number, $multiple, $mode));
     }
 
     /**
@@ -241,5 +265,21 @@ class Numerable
         int $precision = 2
     ): string {
         return Number::toReadableSize($this->number, $locale, $short, $places, $precision);
+    }
+
+    /**
+     * Get the variation between the instance and the given value.
+     */
+    public function variationFrom(Numerable|int|float|string $value): static
+    {
+        return new static(Number::variation(Number::from($value)->raw(), $this->number) * -1);
+    }
+
+    /**
+     * Get the variation between the value and the instance.
+     */
+    public function variationTo(Numerable|int|float|string $value): static
+    {
+        return new static(Number::variation($this->number, Number::from($value)->raw()));
     }
 }

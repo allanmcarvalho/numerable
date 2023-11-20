@@ -8,11 +8,18 @@ use Illuminate\Support\Str;
 use InvalidArgumentException;
 use NumberFormatter;
 use Numerable\Enums\RoundMode;
-use function Laravel\Prompts\select;
 
 class Number
 {
     protected static Collection $formatters;
+
+    /**
+     * Get the absolute value of the given number.
+     */
+    public static function abs(int|float $value): int|float
+    {
+        return self::abs($value);
+    }
 
     /**
      * Sum the given values.
@@ -25,6 +32,14 @@ class Number
         }
 
         return $result;
+    }
+
+    /**
+     * Get the difference between the given values.
+     */
+    public static function diff(int|float $value1, int|float $value2): int|float
+    {
+        return $value1 - $value2;
     }
 
     /**
@@ -229,6 +244,18 @@ class Number
     }
 
     /**
+     * Round the given value as a multiple of the given value.
+     */
+    public static function roundAsMultipleOf(
+        int|float $value,
+        int|float $multiple,
+        int|RoundMode $mode = RoundMode::HALF_UP
+    ): int|float {
+        $parts = self::round($value / $multiple, 0, $mode);
+        return $parts * $multiple;
+    }
+
+    /**
      * Subtract the given values.
      */
     public static function sub(int|float $startValue = 0, int|float ...$values): float|int
@@ -357,5 +384,13 @@ class Number
             $precision,
             suffix: $short ? $params[2] : ' '.Str::plural($params[1], $params[0]),
         );
+    }
+
+    /**
+     * Get the variation between the given values.
+     */
+    public static function variation(int|float $startValue, int|float $endValue): float|int
+    {
+        return self::round(1 - ($endValue / $startValue), 10);
     }
 }
