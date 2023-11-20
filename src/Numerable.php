@@ -20,11 +20,6 @@ class Numerable
         return new static(Number::add($this->number, ...$numbers));
     }
 
-    /**
-     * @param  \Numerable\Numerable|int|float|string  $value
-     * @param  bool  $strict
-     * @return bool
-     */
     public function equal(Numerable|int|float|string $value, bool $strict = false): bool
     {
         return Number::equal($this->number, Number::from($value)->raw(), $strict);

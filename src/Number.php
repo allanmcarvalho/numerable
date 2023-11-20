@@ -6,7 +6,6 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
 use NumberFormatter;
-use function Laravel\Prompts\select;
 
 class Number
 {
@@ -272,7 +271,7 @@ class Number
             $prefix = $value > 0 ? $prefix.'+' : $prefix;
         }
 
-        return $prefix . $formatter->format($value) . $suffix;
+        return $prefix.$formatter->format($value).$suffix;
     }
 
     /**

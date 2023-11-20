@@ -48,7 +48,7 @@ it('can format in other locale', function () {
 
     expect($formatted)
         ->toBeString()
-        ->toEqual("1.234,42");
+        ->toEqual('1.234,42');
 });
 
 it('can format with prefix', function () {
@@ -57,7 +57,7 @@ it('can format with prefix', function () {
 
     expect($formatted)
         ->toBeString()
-        ->toEqual("fooBar34.21");
+        ->toEqual('fooBar34.21');
 });
 
 it('can format with suffix', function () {
@@ -66,7 +66,7 @@ it('can format with suffix', function () {
 
     expect($formatted)
         ->toBeString()
-        ->toEqual("4 oranges");
+        ->toEqual('4 oranges');
 });
 
 it('can format with pattern', function () {
@@ -75,17 +75,17 @@ it('can format with pattern', function () {
 
     expect($formatted)
         ->toBeString()
-        ->toEqual("012.430");
+        ->toEqual('012.430');
 });
 
 it('can format with delta', function () {
     expect(num(43.21)->toFormat(delta: true))
         ->toBeString()
-        ->toEqual("+43.21")
+        ->toEqual('+43.21')
         ->and(num(-43.21)->toFormat(delta: true))
         ->toBeString()
-        ->toEqual("-43.21")
+        ->toEqual('-43.21')
         ->and(num(43.21)->toFormat(prefix: 'foobar ', delta: true))
         ->toBeString()
-        ->toEqual("foobar +43.21");
+        ->toEqual('foobar +43.21');
 });
