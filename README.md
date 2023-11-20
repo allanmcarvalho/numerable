@@ -18,6 +18,35 @@ composer require allanmcarvalho/numerable
 ```
 
 ## Usage
+Numerable is like Laravel string utils classes. You can use Helper class or an instance from numerable.
+
+```php
+use Numerable\Numerable;
+use Numerable\Number;
+
+Number::add(2, 4, 6); // 12
+Number::divide(100, 2); // 50
+Number::multiply(2, 10, 5); // 100
+Number::parse('21.32%'); // 21.32
+Number::sub(20, 4, 1); // 15
+Number::toCurrency(213.21); // $213.21
+Number::toFloat(1_000); // 1000.0
+Number::toInteger(23.21); // 23
+
+//or 
+
+$number = Number::from(10)
+    ->add(2) // now is 12
+    ->divide(2.5) // now is 4.8
+    ->multiply(4) // now is 19.2
+    ->sub(4); // now is 15.2
+$number->toCurrency(); // $15.20
+$number->toCurrency('BRL', 'pt_BR'); // R$15,20
+$number->toFloat(); // 15.2
+$number->toInteger(); // 15
+    
+
+```
 
 ```php
 $numerable = new Numerable\Numerable();
