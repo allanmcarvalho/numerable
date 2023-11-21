@@ -46,7 +46,7 @@ it('is negative', function () {
 
 it('is negative with other negative char', function () {
     $numerable = Number::parse("\xE212.43", 'en');
-    $numerable2 = Number::parse("−10.55", 'en');
+    $numerable2 = Number::parse('−10.55', 'en');
 
     expect($numerable)
         ->toBeInstanceOf(Numerable::class)
