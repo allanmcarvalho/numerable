@@ -219,10 +219,10 @@ class Number
     public static function parse(string $number, string $locale = null): ?Numerable
     {
         $formatter = new NumberFormatter($locale ?? config('app.locale', 'en'), NumberFormatter::DECIMAL);
-        $newNumber = preg_replace('/[^0-9,.]+/', '', $number);
-        $multiplier = in_array(ord(mb_substr($number, 0, 1)), [226, 45]) ? -1 : 1;
+        $number = str_replace("\xE2", "\x2D", $number);
+        $number = preg_replace('/[^0-9,.\x2D]+/', '', $number);
 
-        return $newNumber === '' ? null : new Numerable($formatter->parse($newNumber) * $multiplier);
+        return new Numerable($formatter->parse($number));
     }
 
     /**

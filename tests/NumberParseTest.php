@@ -44,6 +44,24 @@ it('is negative', function () {
         ->toEqual(-12.43);
 });
 
+it('is negative with other negative char', function () {
+    $numerable = Number::parse("\xE212.43", 'en');
+    $numerable2 = Number::parse("−10.55", 'en');
+
+    expect($numerable)
+        ->toBeInstanceOf(Numerable::class)
+        ->and($numerable->raw())
+        ->toBeFloat()
+        ->toBeLessThan(0)
+        ->toEqual(-12.43)
+        ->and($numerable2)
+        ->toBeInstanceOf(Numerable::class)
+        ->and($numerable2->raw())
+        ->toBeFloat()
+        ->toBeLessThan(0)
+        ->toEqual(-10.55);
+});
+
 it('is positive', function () {
     $numerable = Number::parse('12.43', 'en');
 
