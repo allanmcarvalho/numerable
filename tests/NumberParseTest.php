@@ -72,3 +72,11 @@ it('is positive', function () {
         ->toBeGreaterThan(0)
         ->toEqual(12.43);
 });
+
+it('is null', function () {
+
+    expect(Number::parse(null))
+        ->toBeNull()
+        ->and(Number::parse(''))
+        ->toBeNull();
+});

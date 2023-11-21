@@ -218,12 +218,13 @@ class Number
      */
     public static function parse(?string $number, string $locale = null): ?Numerable
     {
-        if (empty($number)) {
+        $number = str_replace("\xE2", "\x2D", $number);
+        $number = preg_replace('/[^0-9,.\x2D]+/', '', $number);
+        if ($number === null || $number === '') {
             return null;
         }
         $formatter = new NumberFormatter($locale ?? config('app.locale', 'en'), NumberFormatter::DECIMAL);
-        $number = str_replace("\xE2", "\x2D", $number);
-        $number = preg_replace('/[^0-9,.\x2D]+/', '', $number);
+
 
         return new Numerable($formatter->parse($number));
     }
