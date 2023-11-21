@@ -5,8 +5,8 @@ use Numerable\Numerable;
 
 it('can do a simple sum', function () {
     expect(Number::add(1, 4, 6))
-        ->toBeInt()
-        ->toEqual(11)
+        ->toBeFloat()
+        ->toEqual(11.0)
         ->and(Number::add(1.5, 4.5, 6.5))
         ->toBeFloat()
         ->toEqual(12.5);
@@ -14,8 +14,8 @@ it('can do a simple sum', function () {
 
 it('can do a simple sum using helper', function () {
     expect(num()->add(1, 4, 6))
-        ->toBeInt()
-        ->toEqual(11)
+        ->toBeFloat()
+        ->toEqual(11.0)
         ->and(num()->add(1.5, 4.5, 6.5))
         ->toBeFloat()
         ->toEqual(12.5);
@@ -33,8 +33,8 @@ it('can sum int values', function () {
         ->and($number2)
         ->toEqual(new Numerable(16))
         ->and($number2->raw())
-        ->toBeInt()
-        ->toEqual(16);
+        ->toBeFloat()
+        ->toEqual(16.0);
 });
 
 it('can sum float values', function () {

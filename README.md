@@ -70,6 +70,8 @@ $number->toReadableSize(short: false); // 15.2 bytes
 
 - **abs** - Get absolute value. Available as static method and instance method.
 - **add** - Add numbers. Available as static method and instance method.
+- **asHumanPercentage** - Format number to human percentage. Available only as instance method.
+- **asFractionPercentage** - Format number to fraction percentage. Available only as instance method.
 - **equal** - Compare numbers. Available as static method and instance method.
 - **diff** - Get difference between numbers. Available as static method and instance method.
 - **divide** - Divide numbers. Available as static method and instance method.

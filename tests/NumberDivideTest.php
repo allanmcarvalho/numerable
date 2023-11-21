@@ -5,8 +5,8 @@ use Numerable\Numerable;
 
 it('can do a simple division', function () {
     expect(Number::divide(4, 4))
-        ->toBeInt()
-        ->toEqual(1)
+        ->toBeFloat()
+        ->toEqual(1.0)
         ->and(Number::divide(4.5, 3))
         ->toBeFloat()
         ->toEqual(1.5)
@@ -18,8 +18,8 @@ it('can do a simple division', function () {
 
 it('can do a simple division using helper', function () {
     expect(num()->divide(4, 4))
-        ->toBeInt()
-        ->toEqual(1)
+        ->toBeFloat()
+        ->toEqual(1.0)
         ->and(num()->divide(4.5, 3))
         ->toBeFloat()
         ->toEqual(1.5)
@@ -41,8 +41,8 @@ it('can be divided by int values', function () {
         ->and($number2)
         ->toEqual(new Numerable(5))
         ->and($number2->raw())
-        ->toBeInt()
-        ->toEqual(5);
+        ->toBeFloat()
+        ->toEqual(5.0);
 });
 
 it('can be divided by float values even if zero', function () {
@@ -89,8 +89,8 @@ it('can divide int values', function () {
         ->and($number2)
         ->toEqual(new Numerable(5))
         ->and($number2->raw())
-        ->toBeInt()
-        ->toEqual(5);
+        ->toBeFloat()
+        ->toEqual(5.0);
 });
 
 it('can divide float values', function () {

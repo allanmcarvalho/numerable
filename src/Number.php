@@ -30,7 +30,7 @@ class Number
             $result += $value;
         }
 
-        return $result;
+        return self::round($result, ini_get('precision') - 1);
     }
 
     /**
@@ -38,7 +38,7 @@ class Number
      */
     public static function diff(int|float $value1, int|float $value2): int|float
     {
-        return static::abs($value1 - $value2);
+        return self::round(static::abs($value1 - $value2), ini_get('precision') - 1);
     }
 
     /**
@@ -53,7 +53,7 @@ class Number
             throw new InvalidArgumentException('The divisor cannot be zero.');
         }
 
-        return $dividend / $divisor;
+        return self::round($dividend / $divisor, ini_get('precision') - 1);
     }
 
     /**
@@ -210,7 +210,7 @@ class Number
             $result *= $value;
         }
 
-        return $result;
+        return self::round($result, ini_get('precision') - 1);
     }
 
     /**

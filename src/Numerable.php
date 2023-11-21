@@ -31,6 +31,22 @@ class Numerable
     }
 
     /**
+     * Convert the instance to a human-readable percentage. (e.g.: 0.5 => 50%)
+     */
+    public function asHumanPercentage(): static
+    {
+        return new static(Number::multiply($this->number, 100));
+    }
+
+    /**
+     * Convert a human-readable percentage to a fraction. (e.g.: 50% => 0.5)
+     */
+    public function asFractionPercentage(): static
+    {
+        return new static(Number::divide($this->number, 100));
+    }
+
+    /**
      * Get absolute value of the number.
      */
     public function diff(Numerable|int|float|string $value): static

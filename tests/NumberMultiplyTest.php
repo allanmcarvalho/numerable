@@ -5,8 +5,8 @@ use Numerable\Numerable;
 
 it('can do a simple multiplication', function () {
     expect(Number::multiply(1, 4, 6))
-        ->toBeInt()
-        ->toEqual(24)
+        ->toBeFloat()
+        ->toEqual(24.0)
         ->and(Number::multiply(1.5, 4.5, 6.5))
         ->toBeFloat()
         ->toEqual(43.875);
@@ -14,8 +14,8 @@ it('can do a simple multiplication', function () {
 
 it('can do a simple multiplication using helper', function () {
     expect(num()->multiply(1, 4, 6))
-        ->toBeInt()
-        ->toEqual(24)
+        ->toBeFloat()
+        ->toEqual(24.0)
         ->and(num()->multiply(1.5, 4.5, 6.5))
         ->toBeFloat()
         ->toEqual(43.875);
@@ -33,8 +33,8 @@ it('can multiply int values', function () {
         ->and($number2)
         ->toEqual(new Numerable(500))
         ->and($number2->raw())
-        ->toBeInt()
-        ->toEqual(500);
+        ->toBeFloat()
+        ->toEqual(500.0);
 });
 
 it('can multiply float values', function () {
