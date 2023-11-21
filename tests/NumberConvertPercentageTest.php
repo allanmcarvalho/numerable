@@ -1,6 +1,5 @@
 <?php
 
-
 it('can convert to human', function () {
     expect(num(1)->asHumanPercentage()->raw())
         ->toBeFloat()
