@@ -216,8 +216,11 @@ class Number
     /**
      * Parse the given formatted (e.g.: percentage, currency) number to a Numerable instance.
      */
-    public static function parse(string $number, string $locale = null): ?Numerable
+    public static function parse(?string $number, string $locale = null): ?Numerable
     {
+        if (empty($number)) {
+            return null;
+        }
         $formatter = new NumberFormatter($locale ?? config('app.locale', 'en'), NumberFormatter::DECIMAL);
         $number = str_replace("\xE2", "\x2D", $number);
         $number = preg_replace('/[^0-9,.\x2D]+/', '', $number);
