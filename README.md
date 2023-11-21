@@ -50,10 +50,10 @@ $number = Number::from(10)
     ->multiplyBy(4) // now is 19.2
     ->sub(4); // now is 15.2
 $number->equal(15.10); // false
-$number->gt(10); // true
-$number->gte(18); // false
-$number->lt(10); // false
-$number->lte(18); // true
+$number->gt(10); // false
+$number->gte(18); // true
+$number->lt(10); // true
+$number->lte(18); // false
 $number->toCurrency(); // $15.20
 $number->toCurrency('BRL', 'pt_BR'); // R$15,20
 $number->toFloat(); // 15.2
