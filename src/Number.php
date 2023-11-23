@@ -225,7 +225,6 @@ class Number
         }
         $formatter = new NumberFormatter($locale ?? config('app.locale', 'en'), NumberFormatter::DECIMAL);
 
-
         return new Numerable($formatter->parse($number));
     }
 

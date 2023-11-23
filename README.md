@@ -49,6 +49,15 @@ $number = Number::from(10)
     ->divide(2.5) // now is 4.8
     ->multiplyBy(4) // now is 19.2
     ->sub(4); // now is 15.2
+    
+//or
+
+$number = num(10)
+    ->add(2) // now is 12
+    ->divide(2.5) // now is 4.8
+    ->multiplyBy(4) // now is 19.2
+    ->sub(4); // now is 15.2
+
 $number->equal(15.10); // false
 $number->gt(10); // true
 $number->gte(18); // false
