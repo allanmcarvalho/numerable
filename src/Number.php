@@ -253,11 +253,12 @@ class Number
     public static function roundAsMultipleOf(
         int|float $value,
         int|float $multiple,
-        int|RoundMode $mode = RoundMode::HALF_UP
+        int|RoundMode $mode = RoundMode::HALF_UP,
+        int $places = null,
     ): int|float {
         $parts = self::round($value / $multiple, 0, $mode);
 
-        return self::round($parts * $multiple, ini_get('precision') - 1);
+        return self::round($parts * $multiple, $places ?? ini_get('precision') - 1);
     }
 
     /**

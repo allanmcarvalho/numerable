@@ -186,9 +186,9 @@ class Numerable
     /**
      * Round the instance number as a multiple of the given value.
      */
-    public function roundAsMultipleOf(int|float $multiple, int|RoundMode $mode = RoundMode::HALF_UP): static
+    public function roundAsMultipleOf(int|float $multiple, int|RoundMode $mode = RoundMode::HALF_UP, int $places = null): static
     {
-        return new static(Number::roundAsMultipleOf($this->number, $multiple, $mode));
+        return new static(Number::roundAsMultipleOf($this->number, $multiple, $mode, $places));
     }
 
     /**
