@@ -23,7 +23,7 @@ jobs:
       - name: Execute coverage
         run: php -dxdebug.mode=coverage ./vendor/bin/pest --coverage-clove ./.build/cache/coverage.xml
       - name: "Publish coverage report to Codecov"
-        uses: "codecov/codecov-action@v4.6.0"
+        uses: "codecov/codecov-action@v5.0.7"
         with:
           files: ./.build/cache/coverage.xml
         env:
